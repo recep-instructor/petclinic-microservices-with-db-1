@@ -3,15 +3,15 @@ provider "aws" {
 }
 
 variable "sec-gr-mutual" {
-  default = "petclinic-k8s-mutual-sec-group"
+  default = "petclinic-k8s-mutual-sec-group-rcp"
 }
 
 variable "sec-gr-k8s-master" {
-  default = "petclinic-k8s-master-sec-group"
+  default = "petclinic-k8s-master-sec-group-rcp"
 }
 
 variable "sec-gr-k8s-worker" {
-  default = "petclinic-k8s-worker-sec-group"
+  default = "petclinic-k8s-worker-sec-group-rcp"
 }
 
 data "aws_vpc" "name" {
@@ -19,7 +19,7 @@ data "aws_vpc" "name" {
 }
 
 resource "aws_security_group" "petclinic-mutual-sg" {
-  name = var.sec-gr-mutual-rcp
+  name = var.sec-gr-mutual
   vpc_id = data.aws_vpc.name.id
 
   ingress {
@@ -46,7 +46,7 @@ resource "aws_security_group" "petclinic-mutual-sg" {
 }
 
 resource "aws_security_group" "petclinic-kube-worker-sg" {
-  name = var.sec-gr-k8s-worker-rcp
+  name = var.sec-gr-k8s-worker
   vpc_id = data.aws_vpc.name.id
 
 
@@ -76,7 +76,7 @@ resource "aws_security_group" "petclinic-kube-worker-sg" {
 }
 
 resource "aws_security_group" "petclinic-kube-master-sg" {
-  name = var.sec-gr-k8s-master-rcp
+  name = var.sec-gr-k8s-master
   vpc_id = data.aws_vpc.name.id
 
   ingress {
