@@ -46,7 +46,7 @@ resource "aws_security_group" "petclinic-mutual-sg" {
 }
 
 resource "aws_security_group" "petclinic-kube-worker-sg" {
-  name = var.sec-gr-k8s-worker-rcp
+  name = var.sec-gr-k8s-worker
   vpc_id = data.aws_vpc.name.id
 
 
@@ -76,7 +76,7 @@ resource "aws_security_group" "petclinic-kube-worker-sg" {
 }
 
 resource "aws_security_group" "petclinic-kube-master-sg" {
-  name = var.sec-gr-k8s-master-rcp
+  name = var.sec-gr-k8s-master
   vpc_id = data.aws_vpc.name.id
 
   ingress {
